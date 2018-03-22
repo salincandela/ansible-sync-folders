@@ -24,14 +24,13 @@ The example repo to get is:
 
 The basic parameters are:
 
-''
-dirs_list:
- - "folder_1/folder1_1/"
- - "folder_2/folder_2_1/"
+	dirs_list:
+	 - "folder_1/folder1_1/"
+	 - "folder_2/folder_2_1/"
 
-files_list:
- - "folder_1/folder1_1/folder_1_1_2.anotherexample"
- - "folder_2/folder_2_1/folder_2_1_1.example"
- ''
+	files_list:
+	 - "folder_1/folder1_1/folder_1_1_2.anotherexample"
+	 - "folder_2/folder_2_1/folder_2_1_1.example"
+
 
 User these parameter to filter wich folder you want to copy on target machines. 
