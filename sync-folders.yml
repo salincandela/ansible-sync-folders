@@ -1,0 +1,14 @@
+---
+# This playbook deploys a simple standalone Tomcat 7 server.
+
+- hosts: all
+  remote_user: sal
+  serial: 1
+#  become: yes
+#  become_method: sudo
+
+  vars_files:
+   - group_vars/all.yml
+
+  roles:
+    - sync-folders
