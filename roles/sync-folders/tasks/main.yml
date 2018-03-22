@@ -2,11 +2,17 @@
     git: repo="{{git_repo}}" dest="{{git_local_path}}"  accept_hostkey=yes force=yes  version="{{git_branch}}"
     delegate_to: localhost
 
+  - name: Clean {{ destination_folder }} path
+    file:
+      state: absent
+      path: "{{ destination_folder }}/"
+    delegate_to: "{{bastion_host}}"  
+
   - name: Create directory structure on target machine  
     file:
       path: "{{destination_folder}}/{{item}}"
       state: directory
-      mode: 0755
+      mode: 0754
     delegate_to: "{{bastion_host}}"
     with_items: 
       - "{{dirs_list}}"    

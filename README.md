@@ -33,4 +33,4 @@ The basic parameters are:
 	 - "folder_2/folder_2_1/folder_2_1_1.example"
 
 
-User these parameter to filter wich folder you want to copy on target machines. 
+User these parameters to filter which folders you want to copy on target machines. 
