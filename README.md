@@ -25,15 +25,14 @@ The example repo to get is:
 The basic parameters are:
 
 include_vars:
-'
- - '--include=*.example'
- #- '--include=*.newfile'
-'
+
+	- '--include=*.example'
+	#- '--include=*.newfile'
+
 User these parameters to filter which folders you want to copy on target machines.
 
-ansible-playbook -i hosts sync-folders.yml --extra-vars "destination_folder=/tmp/ansible-test-dest"
+	ansible-playbook -i hosts sync-folders.yml --extra-vars "destination_folder=/tmp/ansible-test-dest"
 
 How to run the test Docker container
-'
-docker run -ti --privileged --name $DOCKER_CONTAINER_NAME -d -p 5000:22 -e AUTHORIZED_KEYS="$SSH_PUBLIC_KEY" local/centos7-systemd
-'
+
+	docker run -ti --privileged --name $DOCKER_CONTAINER_NAME -d -p 5000:22 -e AUTHORIZED_KEYS="$SSH_PUBLIC_KEY" local/centos7-systemd
