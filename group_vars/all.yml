@@ -5,11 +5,7 @@ git_branch: master
 #Override this variable
 destination_folder: ""
 
-dirs_list:
- - "folder_1/folder1_1/"
- - "folder_2/folder_2_1/"
-
-files_list:
- - "folder_1/folder1_1/folder_1_1_2.anotherexample"
- - "folder_2/folder_2_1/folder_2_1_1.example"
- #- "folder_2/folder_2_1/folder_2_1_2.newfile"
+#Insert your regex to filter file to include
+include_vars:
+ - '--include=*.example'
+ #- '--include=*.newfile'

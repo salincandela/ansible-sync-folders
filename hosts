@@ -1,2 +1,2 @@
-examplehost1
-examplehost2
+#Add target.local in your /etc/hosts poiting to localhost
+target.local ansible_ssh_port=5000 ansible_ssh_user=user

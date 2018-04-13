@@ -6,28 +6,33 @@
     file:
       state: absent
       path: "{{ destination_folder }}/"
-    delegate_to: "{{bastion_host}}"  
+    #delegate_to: "{{bastion_host}}"
 
-  - name: Create directory structure on target machine  
-    file:
-      path: "{{destination_folder}}/{{item}}"
-      state: directory
-      mode: 0754
-    delegate_to: "{{bastion_host}}"
-    with_items: 
-      - "{{dirs_list}}"    
+  - name: Setup two lists to be merged
+    set_fact:
+      init_list:
+        - '--prune-empty-dirs'
+        - '--include=*/'
+      closing_list:
+        - '--exclude=*'
 
-  - name: Copy files on target machine
-    copy:
-      src: "{{git_local_path}}/{{item}}"
-      dest: "{{destination_folder}}/{{item}}"
-    delegate_to: "{{bastion_host}}"
-    with_items: 
-      - "{{files_list}}"
+  - name: Merge the two lists
+    set_fact:
+      rsync_filter: "{{ init_list }} + {{ include_vars }} + {{ closing_list }}"
+
+
+  - name: Synchronize passing in extra rsync options
+    synchronize:
+      src: "{{git_local_path}}/"
+      dest: "{{destination_folder}}/"
+      recursive:  yes
+      delete: yes
+      rsync_opts: "{{rsync_filter}}"
+    #delegate_to: "{{bastion_host}}"
 
   - name: Clean artifact path
     file:
       state: absent
       path: "{{ git_local_path }}/"
-    delegate_to: localhost  
+    delegate_to: localhost
 ...
