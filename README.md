@@ -35,4 +35,8 @@ User these parameters to filter which folders you want to copy on target machine
 
 How to run the test Docker container
 
-	docker run -ti --privileged --name $DOCKER_CONTAINER_NAME -d -p 5000:22 -e AUTHORIZED_KEYS="$SSH_PUBLIC_KEY" local/centos7-systemd
+Execute the following command inside "docker" folder:
+
+	./container_build.sh
+	./container_start.sh 
+   
